@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>    
+
+	<style>
+		body{
+			margin:0;
+		}
+		.slide {
+			text-align: center;
+			height: 100%;
+			width: 70%;
+			position: fixed;
+			display: inline-block;
+
+		}
+
+		.left {
+			float: left;
+			left: 0px;
+			margin-right: 0px;
+		}
+
+		.right {
+			right: 0px;
+		}
+
+		.top {
+			text-align: center;
+			margin: 0 auto;
+
+		}
+
+		.content {
+			height: 100%;
+			margin-bottom: 1vh;
+			background: #abc;
+
+		}
+		#container {
+			text-align: center;
+		}
+
+	</style>
+	<meta charset="utf-8">
+	<title>Untitled Document</title>
+	<script>
+		$(document).ready(function(){
+			var open = {right: false, left: false};
+
+			function easing(effect, elmt, dir, speed, cond, button){
+				var objectDir = (dir == "left") ? "left":"right";
+				if(cond){
+					if(dir == "left"){
+						$(button).animate({ left: 0 } ,1500);
+					}else{
+						$(button).animate({ right: 0 } ,1500);
+					}
+					$(elmt).hide("slide", { direction: dir }, 1500);
+
+				}else{
+					if(dir == "left"){
+						$(button).animate({ left: "70%" } ,1500);
+					}else{
+						$(button).animate({ right: "70%" } ,1500);
+					}
+					
+					$(elmt).show("slide", { direction: dir }, 1500);
+
+				}
+			}
+
+			$('.slide').css('min-height', $(window).innerHeight());
+			$('.top').hide();
+			$('.slide').hide();
+			$('#down-button').hide();
+			$('a.show.btnleft').on('click', function(e) {
+				e.preventDefault();
+				if (!$('.left').is(':animated')) {
+					//$("#left-button").animate({ left: "70%" } ,1500);
+					easing("slide",".left",'left', 1500, open.left, "#left-button");
+					open.left = (open.left) ? false : true;
+				}
+				
+				console.log("left: " +open.left);
+				if(open.right){
+					easing("slide",".right","right", 1500, open.right, "#right-button");
+					open.right = false;
+				}
+			});
+			$('a.show.btnright').on('click', function() {
+				if (!$('.right').is(':animated')) {
+					easing("slide",".right","right", 1500, open.right, "#right-button");
+					open.right = (open.right) ? false : true;
+				}
+				console.log("right:" + open.right);
+				if(open.left){
+					easing("slide",".left",'left', 1500, open.left, "#left-button");
+					open.left = false;
+				}
+			});
+
+			$('.btnup').click(function() {
+    			$('.top').slideDown(1000);
+    			$('#down-button').show();
+    			$('#up-button').hide();
+    		});
+    		$('.btndown').click(function() {
+    			$('.top').slideUp(1000);
+    			$('#down-button').hide();
+    			$('#up-button').show();
+    		});
+		});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+
+		<div class="top">
+			<div class="content">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+			</div>
+		</div>
+
+		<div class="slide left">
+			<div class="content">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+			</div>
+			
+		</div>
+		<div class="slide right">
+			<div class="content">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
+			</div>
+		</div>
+
+		<div style="clear:both;"></div>
+
+		<div id="container">
+			<div id="left-button" style="position: relative; float: left; margin-top: 50vh;"><a class="show btnleft">LEFT</a></div>
+			<div id="right-button" style="position: relative;float: right; margin-top: 50vh;"><a class="show btnright">RIGHT</a></div>
+			<div id="up-button" style="text-align:left;margin: 0 auto; display:inline-block"><a class="show btnup">UP</a></div>
+			<div id="down-button" style="text-align:left;margin: 0 auto; display:inline-block"><a class="show btndown">DOWN</a></div>
+		</div>
+
+
+	</div>
+
+</body>
+</html>
