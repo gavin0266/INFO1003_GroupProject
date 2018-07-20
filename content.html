@@ -1,0 +1,371 @@
+<div class="form content" id="topContent1">
+			<form id="login" method="post" action="">
+				<h2>Login</h2> <br>
+				Username: <input id="username" name="user_name" placeholder="Your username"/> <br>
+				Password: <input id="password" name="user_pass" type="password" placeholder="Your password"/> <br> <br> <br>
+				<button class="confirm" id="confirmLogin" type="submit">Confirm</button> <br> <br> <br>
+				<a href="#" id="registerLink">Don't have an account? Click here!</a>
+
+			</form>
+			
+			<form id="register" method="post" action="register.php" >
+				<h2>Register</h2> <br>
+				Username: <input id="username" name="user_name" placeholder="The username you want"/> <br>
+				Password: <input id="password" name="user_pass" type="password" placeholder="The password you want"/> <br>
+				Confirm Password: <input id="password2" name="user_pass2" type="password" placeholder="Password again"/> <br>
+				Email: <input id="email" name="user_email" placeholder="Email address"/> <br> <br> <br>
+				<button class="confirm" id="confirmRegister" name="confirmRegister" type="submit">Confirm</button> <br> <br> <br>
+				<a href="#" id="loginLink">Return</a>
+
+			</form>
+			
+
+			<div id="userInfo" style="display:none;"><div id="loadInfo"><p></p></div><button class="confirm" id="logout">LOG OUT</button></div>
+			<?php if(!isset($_SESSION["id"])){ ?>
+			<script type="text/javascript">
+				$("#userInfo").hide();
+				$("#login").show();
+			</script>
+			<?php }else{ ?>
+			<script type="text/javascript">
+				$("#loadInfo p").load("info.php");
+				$("#userInfo").show();
+				$("#login").hide();
+			</script>
+			<?php } ?>
+			<div id="mapContainer" class="mapContent" style="display:none;"></div>
+			<div id="returnFromMap"><button class="confirm" id="returnMapButton" type="button">Return</button></div>
+		</div>
+
+
+
+		<div class="content" id="topContent2">
+		<div id="leftSub1">
+			<div id="aboutUs"  style="float:left; width: 48%">
+			<h2>About Us</h2>
+			<br><br>
+
+			<h3>Emosi Derek Tabuasei Liu</h3><br>
+			<p>Role: Director, Developer, Co-ordinator, QA and Lead Research</p>
+			<p>Unikey: etab0834</p>
+			<p>SID: 460360290</p>
+			<p>Email: liuderek97@gmail.com</p>
+			<p>Phone: 0407704036</p>
+			<br>
+
+			<h3>Gavin Fungtammasan</h3><br>
+			<p>Role: Director, Scribe, Developer and JavaScript lead</p>
+			<p>Unikey: gfun5990</p>
+			<p>SID: 460355458</p>
+			<p>Email: gavin.kiwi@gmail.com</p>
+			<p>Phone: 0468395035</p>
+			<br>
+
+			<h3>Jiefeng Zhen</h3><br>
+			<p>Role: Developer, QA, Editor and Research</p>
+			<p>Unikey: jzhe3972</p>
+			<p>SID: 460371089</p>
+			<p>Email: jayzhen2009@hotmail.com</p>
+			<p>Phone: 0404549428</p>
+			<br>
+
+			<h3>Cory Matthew Robinson</h3><br>
+			<p>Role: Design lead, Director, Co-ordinator, Developer and Co-JavaScript</p>
+			<p>Unikey: crob2406</p>
+			<p>SID: 460371311</p>
+			<p>Email: crob2406@uni.sydney.edu.ay</p>
+			<p>Phone: 0478012961</p>
+			</div>
+			<div id="contactUs" style="float:left; margin-left: 1%; width: 49%">
+			<h2>Contact Us</h2><br><br>
+			<h3>Phone</h3><br>
+			<p>For personal enquires or support, 24 hours a day, 7 days a week.
+			24 hour contact number: 0407704036<p><br>
+			<h3>Email</h3><br>
+			<p>
+				General information: jayzhen2009@hotmail.com<br>
+				Privacy: crob2406@uni.sydney.edu.au<br>
+				Account Problems: gavin.kiwi@gmail.com<br>
+				Other: liuderek97@gmail.com<br>
+			</p><br>
+			<h3>Feedback</h3><br>
+			<p>Phone: 0478012961<br>
+			E-mail: crob2406@uni.sydney.edu.au<br>
+			<a href="#" id="feedbackLink">Submit a feedback form</a>
+			</p><br>
+
+			</div>
+		</div>
+		<div id="feedbackform">
+			<form id="feedback" >
+				<h2>Feedback Form</h2> <br>
+				<div style="margin: 1%">Name: <input id="username" placeholder="Your name"/> </div>
+				<div style="display:inline-block">Feedback: </div><textarea  id="feedback" style="max-width: 96%; width: 96%" placeholder="Your feedback here!"></textarea> <br>
+				<button class="confirm" id="confirmFeedback" type="button">Confirm</button> <br> <br> <br>
+
+			</form>
+			<a href="#" id="leftSub1Link">Return</a>
+		</div>
+		</div>
+
+		<div class="content" id="topContent3">
+			<h2>FAQ</h2><br><br>
+		<p><h3>Q: How to use this website? (How does it work?)</h3></p><br />
+		<p>A: The website is a centralised site with a 4-directional layout, which means that there will be subpages/wings on each side of the screen. Each individual wing contains a grouped information which are displayed one at a time on each tier. The user can navigate around multiple tiers and wings using buttons or arrow keys.</p><br />
+
+		<p>For more information on navigation: <a href="#faq_navigate">How can I navigate around pages/wings?</a></p>
+		<br><br>
+		<p id="faq_navigate"><h3>Q: How can I navigate around pages/wings?</h3><br /></p>
+		<p>A: To navigate around, use either buttons provided on the website or arrow keys. Buttons/Keys explanation:</p><br />
+		<ul>
+			<li>Left button/Right key: moving 1 tier to the left of the center.</li><br />
+			<li>Right button/Left key: moving 1 tier to the right of the center.</li><br />
+			<li>Top button/Down key: moving 1 tier above the center.</li><br />
+			<li>Bottom button/Up key: moving 1 tier below the center.</li>
+		</ul></p><br><br>
+		<p><h3>Q: Why is the website so slow?</h3></p><br />
+		<p>A: Some browsers (e.g. Google Chrome) may not be able to render the background properly, which causes serious delays/lags. We apologise for the inconvenience and will resolve the issue ASAP.</p><br><br>
+
+		<p><h3>Q: How can I create an account?</h3></p><br />
+		<p>A: Currently we do not provide the create an account functionality but this will be implemented soon!</p><br><br>
+
+		<p><h3>Q: What is the purpose of this website?</h3></p><br />
+		<p>A: Refer to the about us page.</p><br><br>
+
+		<p><h3>Q: Is my information safe? (Privacy Policy)</h3></p><br />
+		<p>A: Our website will feature basic statistic tracking, and data gathering from the user, with information including user age, gender and location. We also acknowledge that, whilst we don't directly ask for identifying information about the user such as names or passwords for other services, that such information may come into our possession through use of username or password fields. In any such case, all user information gathered will be maintained in manners befitting the utmost secure nature of such information, and will not be used or transferred in any purpose other than the intended use of the site – tracking the statistics and providing targeted information for the users.
+</p><br>
+		</div>
+
+		<div class="navDiv" id="topNav">
+			<input type="image" id="skipCenter" src="svg/nav.svg" alt="submit" class="centerimg navButton skipCenter" />
+			<input type="image" id="skipLeft1" src="svg/nav.svg" alt="submit" class="centerimg navButton skipLeft1" />
+			<input type="image" id="skipLeft2" src="svg/nav.svg" alt="submit" class="centerimg navButton skipLeft2" />
+			<input type="image" id="skipLeft3" src="svg/nav.svg" alt="submit" class="centerimg navButton skipLeft3" />
+			<input type="image" id="skipRight1" src="svg/nav.svg" alt="submit" class="centerimg navButton skipRight1" />
+			<input type="image" id="skipRight2" src="svg/nav.svg" alt="submit" class="centerimg navButton skipRight2" />
+			<input type="image" id="skipRight3" src="svg/nav.svg" alt="submit" class="centerimg navButton skipRight3" />
+			<input type="image" id="skipTop1" src="svg/nav.svg" alt="submit" class="centerimg navButton skipTop1" />
+			<input type="image" id="skipTop2" src="svg/nav.svg" alt="submit" class="centerimg navButton skipTop2" />
+			<input type="image" id="skipTop3" src="svg/nav.svg" alt="submit" class="centerimg navButton skipTop3" />
+			<input type="image" id="skipBottom1" src="svg/nav.svg" alt="submit" class="centerimg navButton skipBottom1" />
+			<input type="image" id="skipBottom2" src="svg/nav.svg" alt="submit" class="centerimg navButton skipBottom2" />
+			<input type="image" id="skipBottom3" src="svg/nav.svg" alt="submit" class="centerimg navButton skipBottom3" />
+		</div>
+
+
+
+	<!-- <button class="dirButton" id="topButton" type="button"><img src="svg/button1.svg" class="rotate270 centerimg" width="200%" height="200%" alt="submit" /></button> -->
+
+
+<span id="leftContent1" class="content">
+			<h2>Demographic: Young Children Background Information</h2><br><br>
+
+			<p>Although strokes are primarily viewed as occurring mainly in the elderly, it also occurs in infants and young children and can even occur before the child's birth. The risk of stroke in children is greatest in the first year of its life and peaks roughly a few weeks after it is born. Although strokes do occur in infants and young children the chances are extremely low with strokes occurring in about 1 in every 4000 births The risk of stroke from birth though age 18 is nearly 11 per 100,000 children per year.2 In fact, stroke is one of the top 10 causes of death for children.</p><br>
+
+			<p>Of children surviving stroke, 50% to 80% will have permanent neurological deficits, most commonly hemiparesis or hemiplegia. Hemiplegia/hemiparesis (total or partial paralysis on one side of the body) is the most common form of cerebral palsy in children born at term, and stroke is its leading cause. Other long-term disabilities caused by a stroke occurring around the time of birth include cognitive and sensory impairments, epilepsy, speech or communication disorders, visual disturbances, poor attention, behavioural problems and poor quality of life.</p><br>
+
+			<img type="image" src="svg/img4.jpg" class="contentImage" style="width: 75%" />
+			<p>When it comes to children Stroke risk factors, symptoms, prevention efforts, and treatment are often different in children than in adults. However, both age groups share a commonality in which rapid diagnosis and treatment and age appropriate rehabilitation can minimise death and disability in children.</p><br>
+
+		</span>
+
+		<span id="leftContent2" class="content">
+			<h2>Demographic: Young Children Symptoms/Prevention/Treatment</h2><br><br>
+
+			<p>Stroke risk factors are much different for children in comparison to adults. Young children with stroke have symptoms that differ greatly to adults. In young children the first symptom of a stroke is often seizures involving only one arm or leg. Seizures are a much less common stroke symptom in adults. Some children with perinatal stroke may appear quite normal and later present with early handedness or developmental delay.</p><br>
+			<img type="image" src="svg/img5.jpg" class="contentImage" style="width: 75%" />
+			<p>Prevention and treatment of stroke also differs in young children to that of an adult. The major treatment difference is the utilisation of the clot-bursting drug TPA for ischemic strokes. The use of TPA is common in the treatment for adults however it is not generally recommended for treating young children or infants. However, Children usually recover better from strokes than adults do due to the fact that their brains are still developing. However, children can experience permanent complications from stroke, such as seizures, weakness, and vision problems. Current treatments for children who suffer from a stroke include Supportive care to maintain normal body temperature, proper hydration, and normal blood sugar levels. Controlling high blood pressure. Detecting and treating seizures with EEG monitoring and anticonvulsant medication. Managing intracranial pressure. Blood transfusions for children with sickle-cell disease. Antithrombotic therapy, which refers to medications used to prevent blood clots from forming or growing, is used in children but generally not infants.</p><br>
+
+			<p>To prevent a stroke from occurring later on in life it is recommended that parents implement healthy living habits and eating habits, and also undertake the necessary precautions to reduce the risk for their children later on in life. Recommended actions include ensuring that they maintain a healthy diet filled with vegetables and fruit, especially carrots. Research has shown that carrots reduces the probability of strokes by up to 68%. Individuals are also recommended to increase their calcium and potassium intake, as these elements play an important role in controlling blood pressure and assist in controlling blood flow in the brain. It is also recommended that the individual reduce their salt intake as sodium increases the risk of a stroke. Finally, it is advised to monitor fat intake as it may cause hyperlipidaemia.</p><br>
+
+		</span>
+
+		<span id="leftContent3" class="content">
+			<h2>Informaiton on strokes, for children:</h2><br><br>
+
+			<p><a href="http://www.stroke.org.nz/information-about-stroke">Information about stroke</a></p><br>
+
+			<p><a href="https://strokefoundation.com.au/about-stroke/types-of-stroke">Types of stroke(including vedio)</a></p><br>
+
+			<p><a href="http://www.strokecenter.org/patients/about-stroke/what- is-a-stroke/">What is a Stroke?</a></p><br>
+
+		</span>
+
+		
+	<!-- <button class="dirButton" id="leftButton" type="button">left</button> -->
+
+
+
+<span id="rightContent1" class="content">
+			<h2>Demographic: Mature Background Information</h2><br><br>
+
+			<p>A stroke is the result of the interruption of blood flow to the brain. This is usually caused by a blood clot forming somewhere in the body, and blocking a vessel in the brain, preventing blood flow to a certain part of the brain. A stroke has lasting effects, both mental and physical. In severe cases, or in people who do not seek help immediately, death is also a very real possibility.</p><br>
+
+			<img type="image" src="svg/img6.jpg" class="contentImage" style="width: 75%" />
+			<p>Strokes occur more frequently in the elderly, as documented by the American Stroke Association, with 66% of recorded cases occurring to individuals over the age of 65.</p><br>
+
+			<p>The rates of stroke for both males and females double each decade after age 55. Which is why it is imperative to implement healthy preventative methods early on in life.</p><br>
+
+			<p>The types of stroke suffered by the elderly are largely the same as strokes suffered by people of other age groups. Elderly people can suffer from both Ischemic strokes and Haemorrhagic stroke; however research has shown that Ischemic strokes have a far greater rate of survival over Haemorrhagic strokes. However, an elderly person that has survived a previous Haemorrhagic stroke has a greater chance of regaining normal functions after suffering a second stroke, Ischemic or Haemorrhagic. </p><br>
+
+		</span>
+
+		<span id="rightContent2" class="content">
+			<h2>Demographic: Mature Prevention/Treatment</h2><br><br>
+
+			<p>Strokes occur more frequently in the elderly, as documented by the American Stroke Association, with 66% of recorded cases occurring to individuals over the age of 65.</p><br>
+
+			<p>Elderly people often suffer from additional illnesses, which may aggravate already existing stroke symptoms. For example, arthritis is a major cause of disability in elderly people, and is often observed in overweight or obese people, due to their joints wearing out faster than an individual at a healthy weight. In turn, obesity can both significantly raise the chance of stroke and make the symptoms of stroke much more difficult to deal with, not only for the sufferer, but also the individuals who may have to provide care for the stroke sufferer.</p><br>
+
+			<p>Due to the fact that the chance of falling victim to a stroke doubles as an individual reaches 65 it is imperative that individuals implement healthy habits early on in life as it is harder to combat strokes later on in life. However, this does not make it impossible to prevent strokes it only decreases the effectiveness of the methods utilised to prevent strokes. To reduce the chances of suffering from a stroke matured individuals should ensure that they are constantly monitoring their wellbeing, taking note of any changes and increases in blood pressure, the number of headaches that the individuals experiences or any sensations of numbness. It is recommended that if the individual experiences any of these symptoms they consult their doctor as soon as possible.</p><br>
+
+			<p>Matured individuals should also look into maintaining a healthy diet and undertaking regular medical check-ups and are encouraged to participate in physical activities that relieve stress and raise the mood of the individuals. Recommended activities include jogging and walking.</p><br>
+
+			<p>it is suggested that individuals do not undertake in any stressful activities that may affect their mood as it is harmful for the mental health of the individual.</p><br>
+
+			<img type="image" src="svg/img7.jpg" class="contentImage" style="width: 75%" />
+
+			<p>To treat the different types of strokes for matured individuals suffering from a haemorrhagic stroke, matured individuals can undertake microsurgery in order to clip the aneurysm or remove the abnormal vessel. Treatment for ischemic strokes includes a dosage of certain medication such as warfarin, acetylsalicylic acid, clopidogrel.</p><br>
+
+			<p>Matured individuals who are suffering from diabetes must also ensure that they manage their diabetes effectively as having high blood sugar level will damage blood vessels causing clots to form from the inside. In order to maintain low blood sugar level individuals must ensure that they are constantly monitoring their blood sugar level as directed by their doctor and undertake in regular exercise and medicines to keep their blood sugar level within the recommended range.</p><br>
+
+		</span>
+
+	<span id="rightContent3" class="content">
+		<h2>Symptom Lists</h2><br><br>
+		<p><a href="http://www.michaelbaisdennow.com/signs-of-stroke-women">Signs Of Strokes Unique To Women</a></p><br>
+		<p><a href="http://www.healthline.com/health/signs-stroke-men">Signs of Strokes in Men</a></p>
+		<br>
+		<h3>Symptoms in Adults:</h3><br>
+		<p><a href="http://www.mdlinx.com/psychiatry/medical-news-article/2016/03/21/post-stroke-depression-measurement-post-stroke/6581512/">Early Symptom Identification of Post-Stroke Depression (PSD)</a></p><br>
+		<p><a href="http://www.barnesjewish.org/Medical-Services/Neurology-Neurosurgery/Stroke-Center/Having-a-Stroke-Signs-and-Symptoms">Having a Stroke: Signs and Symptoms</a></p><br>
+		<h3>Actions to Take:</h3><br>
+		<p><a href="http://www.strokeassociation.org/idc/groups/heart-public/@wcm/@hcm/@gwtg/documents/downloadable/ucm_309006.pdf">Stroke Association</a></p>
+		
+	</span>
+
+		
+
+	<!-- <button class="dirButton" id="rightButton" type="button">right</button> -->
+
+
+
+
+<div id="bottomContent1" class="content">
+			<h2>Demographic: Young Adults and Middle Aged Background Information</h2><br><br>
+
+			<p>A stroke is the result of the interruption of blood flow to the brain. This is usually caused by a blood clot forming somewhere in the body, and blocking a vessel in the brain, preventing blood flow to a certain part of the brain. A stroke has lasting effects, both mental and physical. In severe cases, or in people who do not seek help immediately, death is also a very real possibility.</p><br>
+
+			<p>Although stroke is seen as an issue mainly associated with elderly individual’s stroke is not an uncommon issue for young adults. As age increases the risk of suffering a stroke also increases. Although the overall rate of stroke is decreasing, the rate of stroke sufferers is increasing for young aged individuals between 18 and 40. A study published in the journal Neurology looked at stroke trends between 1999 and 2005, and found that the mean age of stroke decreased from 71 years to 69 years, and the rate of stroke in the 20 to 54 age range increased from about 13 percent to 19 percent.</p><br>
+			<img type="image" src="svg/img8.jpg" class="contentImage" style="width: 75%" />
+			<p>Stroke in young adults requires a different approach to treatment and management because of the different symptoms and causes that vary between young adults and elderly individuals. All stroke is caused by decreased blood supply to the brain. In older adults, the most frequent cause is a blood clot that forms inside the heart or a blood vessel, breaks loose, and travels to the brain. This type of stroke is called an ischemic stroke. In young adults, however, common causes include infections, trauma, heart disorders, sickle cell disease, dehydration and in some cases drug abuse.</p><br>
+
+			<p>The types of stroke suffered by middle aged individuals are largely the same as strokes suffered by people of other age groups. Middle aged individuals can suffer from both Ischemic strokes and Haemorrhagic stroke; however, research has shown that Ischemic strokes have a far greater rate of survival over Haemorrhagic strokes. However, a middle aged individual that has survived a previous Haemorrhagic stroke has a greater chance of regaining normal functions after suffering a second stroke, Ischemic or Haemorrhagic. </p><br>
+
+			<p>Middle aged individuals are also susceptible to a number of health factors as well as daily life factors. For example, there is a large number of people that are aged between 40 and 55 that suffer from diabetes which can increase the risk of suffering stroke due to high blood sugar levels that will damage blood vessels causing clots to form from the inside. In order to maintain low blood sugar level individuals must ensure that they are constantly monitoring their blood sugar level as directed by their doctor and undertake in regular exercise and medicines to keep their blood sugar level within the recommended range. Drinking can also increase the risk of falling victim to stroke as regular heavy drinking can raise blood pressure to consistently high levels, increasing the risk of an individual experiencing a stroke.</p><br>
+
+			<p>Over the past few years the number of people aged between their 40’s and 50’s has increased exponential due to the rise in obesity and inactive lifestyles. Statistics from certain studies have identified that since 2000 the number of men aged between 40 to 54 that have been hospitalised due to a stroke has increased by 46% and among women the figure has increased by 30%. Strokes have not only an effect on a person’s wellbeing but also on an individual’s financial wellbeing as it can effect an individual’s ability to maintain a job. Strokes are also more difficult to recover from at an older age due to the brains reduced plasticity. Therefore, making it imperative that individuals establish a healthy lifestyle in order to prevent a stroke from ever happening in the first place. </p><br>
+
+		</div>
+
+		<div id="bottomContent2" class="content">
+			<h2>Demographic: Young Adults and Middle Aged Treatment/Prevention/Symptoms</h2><br><br>
+
+			<p>Strokes occur in all age groups with some age groups at higher risk of receiving a stroke than others, however although there are variations in the probability of receiving a stroke for some people the symptoms of a stroke are universal to all individuals regardless of age.</p><br>
+
+			<p>Symptoms of a stroke include: Facial weakness, arm weakness and difficulty with speech as well as weakness numbness or paralysis of the face Loss of vision, sudden blurring or decreased vision in one or both eyes, Headache, usually severe and abrupt onset or unexplained change in the pattern of headaches, and difficulty with swallowing.</p><br>
+
+			<p>The longer a stroke remains untreated, there is a greater chance that the victim will suffer stroke related brain damage. Therefore, it is impeccable that emergency medical treatment is sought out soon after symptoms begin in order to improve the chance of survival and successful rehabilitation.</p><br>
+
+			<img type="image" src="svg/img1.jpg" class="contentImage" style="width: 75%" />
+			<p>In terms of treatment for victims the methods available are very similar to matured individuals. To treat the different types of strokes for matured individuals suffering from a haemorrhagic stroke, matured individuals can undertake microsurgery in order to clip the aneurysm or remove the abnormal vessel. Treatment for ischemic strokes includes a dosage of certain medication such as warfarin, acetylsalicylic acid, clopidogrel.</p><br>
+
+			<p>Emergency treatment for stroke depends on whether you're having an ischemic stroke blocking an artery — the most common kind — or a haemorrhagic stroke that involves bleeding into the brain.</p><br>
+
+			<p>Early treatment after a stroke is vital as the faster you can get treatment the more brain can be saved. If you arrive at a hospital quickly you may be treated with a drug known as TPA which is the cornerstone of stroke treatment and assists in breaking down the blood clots in the brain. For early treatment after a stroke – ischaemic (caused by a blood clot) you should be given aspirin as soon as possible after the stroke. Aspirin is not recommended if you have had a stroke where the blood vessel burst. Aspirin helps reduce further blood clots and lowers your chance of having another stroke.</p><br>
+
+			<p>Emergency treatment of haemorrhagic stroke focuses on controlling your bleeding and reducing pressure in your brain. Surgery also may be performed to help reduce future risk. Surgery may be used to repair blood vessel abnormalities associated with hemorrhagic strokes. Your doctor may recommend one of these procedures after a stroke or if an aneurysm or arteriovenous malformation (AVM) or other type of vascular malformation caused your hemorrhagic stroke.</p><br>
+
+			<img type="image" src="svg/img3.jpg" class="contentImage" style="width: 75%" />
+			<p>The best treatment for a stroke is ensuring that you implement a healthy diet and lifestyle to prevent a stroke from ever occurring. Live a healthy live by maintaining a healthy diet and undertaking regular medical check-ups. Ensure that individuals monitor their psychological and mental health, and are encouraged to participate in physical activities that relieve stress and raise the mood of the individuals. Recommended activities include jogging and walking, it is suggested that individuals do not undertak in any stressful activities that may affect their mood as it is harmful for the mental health of the individual.</p><br>
+
+			<p>It is also suggested that individuals stay away from smoking. Smoking has been seen to accelerate clot formation in various ways. Firstly, it thickens the blood and increases the amount of plaque build-up in the arteries. Combined with a healthy diet and regular exercise smoking cessation is one of the most effective methods to prevent a stroke </p><br>
+
+			<p>An individuals’ diet is also one of the main factors that can assist in preventing a patient from experiencing a stroke.  It is suggested that patients ensure that they maintain a healthy diet filled with vegetables and fruit, especially carrots. Research has shown that carrots reduces the probability of strokes by up to 68%. Individuals are also recommended to increase their calcium and potassium intake, as these elements play an important role in controlling blood pressure and assist in controlling blood flow in the brain. It is also recommended that the individual reduce their salt intake as sodium increases the risk of a stroke. Finally, it is advised to monitor fat intake as it may cause hyperlipidaemia. Chinese traditional medicine suggests that individuals should increase their bean products and tea dosage to assist in controlling the fat intake.</p><br>
+
+			<p>It is also suggested that individuals avoid alcohol, drugs and smoking</p><br>
+
+		</div>
+
+		<div id="bottomContent3" class="content">
+			<h2>Symptom Lists:</h2><br><br>
+
+			<p><a href="http://www.michaelbaisdennow.com/signs-of-stroke-women">Signs of stroke for Women</a></p><br>
+
+			<p><a href="http://www.healthline.com/health/signs-stroke-men">Signs of stroke for Men</a></p><br>
+
+			<h2>Stroke triggers</h2>
+
+			<p><a href="https://www.yahoo.com/beauty/eating-habit-increases-stroke-risk-101904324.html">This eating habit increases stroke risk like crazy</a></p><br>
+
+			<p><a href="https://www.caring.com/articles/5-foods-that-can-trigger-stroke">Five foods that can trigger a stroke</a></p><br>
+
+			<h2>Stroke preventing eating habits</h2>
+
+			<p><a href="http://my.clevelandclinic.org/health/diseases_conditions/stroke/hic_Eating_Well_After_a_Stroke">Ten strategies to reduce your risk of a stroke(at middle page)</a></p><br>
+
+			<p><a href="https://www.sharecare.com/health/heart-disease/article/5-habits-that-stop-strokes">Five habits that stop strokes</a></p><br>
+
+			<p><a href="http://arsaves.uams.edu/files/2012/02/Stroke-Prevention-Dr-Paulo-Ribeiro-UAMS-6-17-11.pdf">Super foods leading to stroke prevention(*pdf )</a></p><br>
+
+			<p><a href="http://www.everydayhealth.com/pictures/best-diet-prevent-stroke/">The best diet to prevent strokes</a></p><br>
+
+			<p><a href="http://www.mirror.co.uk/lifestyle/health/reduce-your-stroke-risk-eat-1797024">Reduce your stroke risk: Eat tomatoes, drink coffee and 10 other top tips</a></p><br>
+
+			<p><a href="https://www.sharecare.com/health/stroke-prevention/foods-help-avoid-stroke">What foods can I eat to help avoid a stroke?(Video)</a></p><br>
+
+			<p><a href="http://www.strokeassociation.org/STROKEORG/LifeAfterStroke/HealthyLivingAfterStroke/UnderstandingRiskyConditions/What-You-Can-Do-To-Reduce-Your-Stroke-Risk_UCM_310279_Article.jsp#.VzgtveRPolM">What you can do to reduce your stroke risk</a></p><br>
+
+			<h2>Actions to take in events of stroke</h2>
+
+			<p><a href="http://www.nextavenue.org/what-do-when-someone-suffers-stroke/">What to do when someone suffers a stroke</a></p><br>
+
+			<p><a href="http://www.strokesmart.org/article?id=112">TIAs: Take Immediate Action(TIAs can be a serious warning sign of future stroke)</a></p><br>
+
+			<p><a href="http://www.upmc.com/patients-visitors/education/stroke/Pages/stroke-emergency-treatment.aspx">Stroke emergency treatment</a></p><br>
+
+			<p><a href="https://www.acls.net/acls-suspected-stroke-algorithm.htm">Suspected Stroke Algorithm （and treatments）</a></p><br>
+
+			<h2>Lifestyles preventing strokes</h2>
+
+			<p><a href="http://www.strokeassociation.org/idc/groups/stroke-public/@wcm/@hcm/documents/downloadable/ucm_309712.pdf">Lifestyle changes To prevent strokes(pdf)</a></p><br>
+
+			<p><a href="http://www.cdc.gov/stroke/healthy_living.htm">Preventing strokes: Healthy living</a></p><br>
+
+			<p><a href="http://www.medicaldaily.com/6-ways-prevent-stroke-and-disability-living-healthy-lifestyle-359382">Six ways to prevent stroke and disability by living a healthy lifestyle</a></p><br>
+
+			<p><a href="http://www.drsinatra.com/how-to-prevent-a-stroke5-lifestyle-factors-that-can-halve-your-risk/">How to prevent a stroke–5 lifestyle factors that can halve your risk</a></p><br>
+
+			<p><a href="http://www.stroke.ie/iopen24/preventing-stroke-t-483_495_506.html">Preventing a stroke</a></p><br>
+
+		</div>
+
+		<div class="navDiv" id="bottomNav">
+			<input type="image" id="skipCenter" src="svg/nav.svg" alt="submit" class="centerimg navButton skipCenter" />
+			<input type="image" id="skipLeft1" src="svg/nav.svg" alt="submit" class="centerimg navButton skipLeft1" />
+			<input type="image" id="skipLeft2" src="svg/nav.svg" alt="submit" class="centerimg navButton skipLeft2" />
+			<input type="image" id="skipLeft3" src="svg/nav.svg" alt="submit" class="centerimg navButton skipLeft3" />
+			<input type="image" id="skipRight1" src="svg/nav.svg" alt="submit" class="centerimg navButton skipRight1" />
+			<input type="image" id="skipRight2" src="svg/nav.svg" alt="submit" class="centerimg navButton skipRight2" />
+			<input type="image" id="skipRight3" src="svg/nav.svg" alt="submit" class="centerimg navButton skipRight3" />
+			<input type="image" id="skipTop1" src="svg/nav.svg" alt="submit" class="centerimg navButton skipTop1" />
+			<input type="image" id="skipTop2" src="svg/nav.svg" alt="submit" class="centerimg navButton skipTop2" />
+			<input type="image" id="skipTop3" src="svg/nav.svg" alt="submit" class="centerimg navButton skipTop3" />
+			<input type="image" id="skipBottom1" src="svg/nav.svg" alt="submit" class="centerimg navButton skipBottom1" />
+			<input type="image" id="skipBottom2" src="svg/nav.svg" alt="submit" class="centerimg navButton skipBottom2" />
+			<input type="image" id="skipBottom3" src="svg/nav.svg" alt="submit" class="centerimg navButton skipBottom3" />
+		</div>
+
+
+	<!-- <button class="dirButton" id="bottomButton" type="button">bottom</button> -->

@@ -1,0 +1,692 @@
+$(document).ready(function(){
+			var clicked = {left: false, right: false, top: false, bottom: false};
+			var x = 0;
+			var y = 0;
+			var mouseCoord = new Object();
+
+			//Each tier has it's own clicked in an array e.g. tier 1: clickedArray[0].left
+			var clickedArray = [null,
+								jQuery.extend(true, {}, clicked),
+			 					jQuery.extend(true, {}, clicked),
+								jQuery.extend(true, {}, clicked),
+								jQuery.extend(true, {}, clicked),
+								jQuery.extend(true, {}, clicked)];
+
+			//Once the edge is detected
+			function detectScreenEgde(mouseX, mouseY){
+				var width = $(document).width()-1;
+				var height = $(document).height()-1;
+				if(mouseX == 0){
+					if (!$('#leftDiv').is(':animated') && !clicked.left) {
+					}
+					console.log("left");
+				}
+				if(mouseY == 0){
+					if (!$('#topDiv').is(':animated') && !clicked.top) {
+					}
+					console.log("top");
+				}
+				if(mouseY == height){
+					if (!$('#bottomDiv').is(':animated') && !clicked.bottom) {
+					}
+					console.log("bottom");
+				}
+				if(mouseX == width){
+					if (!$('#rightDiv').is(':animated') && !clicked.right) {
+					}
+
+					console.log(width);
+				}
+			}
+
+			//Keeping track of mouse movements
+			function mMove (e) {
+				mouseCoord.x = e.pageX;
+				mouseCoord.y = e.pageY;
+				//detectScreenEgde(mouseCoord.x, mouseCoord.y)
+			}
+
+			//Adding event listeners
+
+			$(document).mousemove(mMove);
+
+			//Arrow keys detection
+			$(document).keydown(function(e) {
+				switch(e.which) {
+			        case 37: // left
+			        if(y == 0 && x != 2){
+			        	x++;
+			        	doSomething();
+			        }
+			        break;
+
+			        case 38: // up
+			        if(x == 0 && y != 2){
+			        	y++;
+			        	doSomething();
+			        }
+			        break;
+
+			        case 39: // right
+
+			        if(y == 0 && x != -4){
+			        	x--;
+			        	doSomething();
+			        }
+			        break;
+
+			        case 40: // down
+
+			        if(x == 0 && y != -3){
+			        	y--;
+			        	doSomething();
+			        }
+			        break;
+
+			        default: return; // exit this handler for other keys
+			    }
+			    e.preventDefault(); // prevent the default action (scroll / move caret)
+			});
+
+			//Expanding wings
+			function expandDiv(element, directionClicked, speed, direction1, direction2, condition) {
+				if(condition == "horizontal"){
+					element.stop().animate({left: direction1, top: '0%', height: '100%', width: '75%', opacity: '1.0'}, speed);
+					$("#centerNav").hide();
+				}else{
+					element.stop().animate({width: '100%', left: '0%', top: direction1, height: '75%', opacity: '1.0'}, speed);
+					$("#centerNav").hide();
+				}
+
+			}
+
+			//Collapsing wings
+			function collapseDiv(element, directionClicked, speed, direction1, direction2, condition) {
+				if(condition == "horizontal"){
+					element.stop().animate({left: direction2, top: '14%', height: '72%',width: '12%', opacity: '0.0'}, speed);
+					$("#centerNav").show();"easeInOutQuart"
+				}else{
+					element.stop().animate({width: '72%', left: '14%', top: direction2, height: '12%', opacity: '0.0'}, speed);
+;					$("#centerNav").show();
+				}
+			}
+			
+			//Return false to all clicks in particular tier
+			function falseAllClick(index){
+				clickedArray[index].left = false;
+				clickedArray[index].right = false;
+				clickedArray[index].top = false;
+				clickedArray[index].bottom = false;
+			}
+
+			//Showing particular div content
+			function showDiv(div){
+
+				$("#topContent1").hide();
+				$("#topContent2").hide();
+				$("#topContent3").hide();
+
+
+				$("#leftContent1").hide();
+				$("#leftContent2").hide();
+				$("#leftContent3").hide();
+				$("#leftContent4").hide();
+
+				$("#rightContent1").hide();
+				$("#rightContent2").hide();
+				//$("#rightContent3").hide();
+
+				$("#bottomContent1").hide();
+				$("#bottomContent2").hide();
+				//$("#bottomContent3").hide();
+
+				div.show()
+			}
+
+			//Checking buttons
+			function checkButtons(){
+				console.log('Called');
+
+				if (x == -4) {
+
+					$("#leftButton").hide();
+
+				} else if (x == -3) {
+
+					$("#leftButton").show();
+
+				} else if (x == -1) {
+
+					$("#topButton").hide();
+					$("#bottomButton").hide();
+				console.log('if success');
+
+				} else if ((x == 0) && (y ==0)) {
+
+					$("#leftButton").show();
+					$("#rightButton").show();
+					$("#topButton").show();
+					$("#bottomButton").show();
+
+				} else if (x == 1) {
+
+					$("#topButton").hide();
+					$("#bottomButton").hide();
+					$("#rightButton").show();
+
+				} else if (x == 3) {
+
+					$("#rightButton").hide();
+
+				} else if (y == -1) {
+
+					$("#topButton").show();
+					$("#rightButton").hide();
+					$("#leftButton").hide();
+
+				} else if (y == -2) {
+
+					$("#topButton").show();
+
+				} else if (y == -3) {
+
+					$("#topButton").hide();
+
+				} else if (y == 1) {
+
+					$("#bottomButton").show();
+					$("#rightButton").hide();
+					$("#leftButton").hide();
+					$("#topButton").show();
+
+				} else if (y == 2) {
+
+					$("#bottomButton").hide();
+					$("#topButton").show();
+
+
+				}
+
+			}
+
+			//DO SOMETHING
+			function doSomething(){
+
+				if(x == -4){
+					//expandDiv($("#topDiv"), clicked.top, 1500, "0%", "0%", "vertical");
+					console.log("load content tier 4");
+					showDiv($("#leftContent4"));
+					checkButtons();
+				}
+
+				if(x == -3){
+					//expandDiv($("#topDiv"), clicked.top, 1500, "0%", "0%", "vertical");
+					console.log("load content tier 3");
+					showDiv($("#leftContent3"));
+					checkButtons($());
+				}
+				if(x == 3){
+					//expandDiv($("#rightDiv"), clicked.right, 1500, "25%", "88%");
+					console.log("load content tier 3");
+					showDiv($("#rightContent3"));
+					initMap("#rightContent3");
+				}
+				if(x == -2){
+					//expandDiv($("#leftDiv"), clicked.left, 1500 ,"0", "0");
+					console.log("load content tier 2");
+					showDiv($("#leftContent2"));
+				}
+				if(x == 2){
+					//expandDiv($("#rightDiv"), clicked.right, 1500, "25%", "88%");
+					console.log("load content tier 2");
+					showDiv($("#rightContent2"));
+				}
+				if(x == -1){
+					if(!clickedArray[1].left){
+						expandDiv($("#leftDiv"), clickedArray[1].left, 1500 ,"0", "0", "horizontal");
+					}
+					clickedArray[1].left = !(clickedArray[1].left);
+					console.log("load content tier 1");
+					showDiv($("#leftContent1"));
+				}
+				if(x == 1){
+					console.log(clickedArray[1].right)
+					if(!clickedArray[1].right){
+						expandDiv($("#rightDiv"), clickedArray[1].right, 1500, "25%", "88%", "horizontal");
+					}
+					clickedArray[1].right = !(clickedArray[1].right);
+					console.log("load content tier 1");
+					showDiv($("#rightContent1"));
+				}
+
+				if(y == -3){
+					//expandDiv($("#topDiv"), clicked.top, 1500, "0%", "0%", "vertical");
+					console.log("load content tier 3");
+					showDiv($("#topContent3"));
+				}
+				if(y == -2){
+					//expandDiv($("#topDiv"), clicked.top, 1500, "0%", "0%", "vertical");
+					console.log("load content tier 2");
+					showDiv($("#topContent2"));
+				}
+				if(y == 2){
+					//expandDiv($("#bottomDiv"), clicked.bottom, 1500, "25%", "88%", "vertical");
+					console.log("load content tier 2");
+					showDiv($("#bottomContent2"));
+				}
+				if(y == -1){
+					if(!clickedArray[1].top){
+						expandDiv($("#topDiv"), clickedArray[1].top, 1500, "0%", "0%", "vertical");
+					}
+					clickedArray[1].top = !(clickedArray[1].top);
+					console.log("load content tier 1");
+					showDiv($("#topContent1"));
+				}
+				if(y == 1){
+					if(!clickedArray[1].bottom){
+						expandDiv($("#bottomDiv"), clickedArray[1].bottom, 1500, "25%", "88%", "vertical");
+					}
+					clickedArray[1].bottom = !(clickedArray[1].bottom);
+					console.log("load content tier 1");
+					showDiv($("#bottomContent1"));
+				}
+
+
+				if(y == 0 && x == 0){
+					
+					collapseAll();
+					//checkClicked("bottom");
+				}
+				checkButtons();
+			}
+
+			//Button click detection
+			$("#leftButton").on('click', function(){
+
+				if(y == 0 && x != -4){
+					x--;
+					doSomething()
+				}
+			});
+			//Button click detection
+			$("#rightButton").on('click', function(){
+
+				if(y == 0 && x != 3){
+					x++;
+					doSomething()
+				}
+			});
+			//Button click detection
+			$("#topButton").on('click', function(){
+
+				if(x == 0 && y != -3){
+					y--;
+					doSomething();
+				}
+			});
+			//Button click detection
+			$("#bottomButton").on('click', function(){
+
+				if(x == 0 && y != 2){
+					y++;
+					doSomething();
+				}
+			});
+
+			//Button click detection
+			$("#registerLink").on('click',function(){
+
+				$("#login").hide();
+				$("#register").show();
+
+			});
+
+			//Button click detection
+			$("#loginLink").on('click',function(){
+
+				$("#register").hide();
+				$("#login").show();
+
+			});
+
+			//Button click detection
+			$("#feedbackLink").on('click',function(){
+
+				$("#leftSub1").hide();
+				$("#feedbackform").show();
+
+			});
+
+			//Button click detection
+			$("#leftSub1Link").on('click',function(){
+
+				$("#leftSub1").show();
+				$("#feedbackform").hide();
+
+			});
+
+			//Collapse all Function
+			function collapseAll() {
+
+				
+					collapseDiv($("#leftDiv"), clicked.left, 1500 ,"0", "0", "horizontal");
+					collapseDiv($("#rightDiv"), clicked.right, 1500, "25%", "88%", "horizontal");
+					collapseDiv($("#topDiv"), clicked.left, 1500 ,"0", "0", "vertical");
+					collapseDiv($("#bottomDiv"), clicked.right, 1500, "25%", "88%", "vertical");
+					falseAllClick(1);
+					console.log("collapse all");
+
+			}
+
+			//DoSomething, from the nav Buttons
+			function whichNav(toX, toY){
+
+				console.log("whichnav called");
+				if ((x != toX) && (y != toY)) {
+					while (y != 0) {
+
+						if (y < toY) {
+							y++;
+							doSomething();
+							checkButtons();
+						} else {
+							y--;
+							doSomething();
+							checkButtons();
+						}
+					}		
+					while (x != 0) {
+
+						if (x < toX) {
+							x++;
+							doSomething();
+							checkButtons();
+						} else {
+							x--;
+							doSomething();
+							checkButtons();
+						}
+					}
+				}
+
+
+				while (x != toX) {
+
+					if (x < toX) {
+						x++;
+						doSomething();
+						checkButtons();
+					} else {
+						x--;
+						doSomething();
+						checkButtons();
+					}
+				}
+				while (y != toY) {
+
+					if (y < toY) {
+						y++;
+						doSomething();
+						checkButtons();
+					} else {
+						y--;
+						doSomething();
+						checkButtons();
+					}
+				}
+			};
+
+			$(document).on('click','#skipCenter',function () {
+
+				collapseAll();
+				x = 0;
+				y = 0;
+				checkButtons();
+				console.log("Nav center clicked");
+			});
+
+			//if left3 nav button clicked
+			$(document).on('click','#skipLeft3',function () {
+			//$("#skipLeft3").on('click',function(){
+
+				whichNav( -3, 0);
+				console.log("Nav left clicked");
+			});
+
+			//if left2 nav button clicked
+			$(document).on('click','#skipLeft2',function () {
+			//$("#skipLeft2").on('click',function(){
+
+				whichNav( -2, 0);
+				console.log("Nav left clicked");
+			});
+
+			//if left1 nav button clicked
+			$(document).on('click','#skipLeft1',function () {
+			//$("#skipLeft1").on('click',function(){
+
+				whichNav( -1, 0);
+				console.log("Nav left clicked");
+
+			});
+
+			//if Right3 nav button clicked
+			$(document).on('click','#skipRight3',function () {
+			//$("#skipRight3").on('click',function(){
+
+				whichNav( 3, 0);
+				console.log("Nav right clicked");
+			});
+
+			//if Right2 nav button clicked
+			$(document).on('click','#skipRight2',function () {
+			//$("#skipRight2").on('click',function(){
+
+				whichNav( 2, 0);
+				console.log("Nav right clicked");
+			});
+
+			//if Right1 nav button clicked
+			$(document).on('click','#skipRight1',function () {
+			//$("#skipRight1").on('click',function(){
+
+				whichNav( 1, 0);
+				console.log("Nav right clicked");
+			});
+
+			//if top3 nav button clicked
+			$(document).on('click','#skipTop3',function () {
+			//$("#skipTop3").on('click',function(){
+
+				whichNav( 0, -3);
+			});
+
+			//if top2 nav button clicked
+			$(document).on('click','#skipTop2',function () {
+			//$("#skipTop2").on('click',function(){
+
+				whichNav( 0, -2);
+				console.log("Nav top clicked");
+			});
+
+			//if top1 nav button clicked
+			$(document).on('click','#skipTop1',function () {
+			//$("#skipTop1").on('click',function(){
+
+				whichNav( 0, -1);
+				console.log("Nav top clicked");
+			});
+
+			//if Bottom3 nav button clicked
+			$(document).on('click','#skipBottom3',function () {
+			//$("#skipBottom3").on('click', function() {
+
+				whichNav( 0, 3);
+				console.log("Nav bottom clicked");
+			});
+
+			//if Bottom2 nav button clicked
+			$(document).on('click','#skipBottom2',function () {
+			//$("#skipBottom2").on('click',function(){
+
+				whichNav( 0, 2);
+				console.log("Nav bottom clicked");
+			});
+
+			//if Bottom1 nav button clicked
+			$(document).on('click','#skipBottom1',function () {
+			//$("#skipBottom1").on('click',function(){
+
+				whichNav( 0, 1);
+				console.log("Nav bottom clicked");
+			});
+
+			//AJAX
+			$("#confirmRegister").on('click', function(){
+				var data = $("#register").serialize();
+				$.ajax({
+					type: "POST",
+					url: "register.php",
+					data: data ,
+					success: function(){$("#register").hide();$("#login").show();}
+				});
+
+				return false;
+			});
+
+			var logout = false;
+			$("#confirmLogin").on('click', function(){
+				var data = $("#login").serialize();
+				$("#username").val('');
+				$("#password").val('');
+				$.ajax({
+					type: "POST",
+					url: "login.php",
+					data: data ,
+					success: function(html){
+						if(html == "yeah"){
+							$("#login").hide();
+							$("#loadInfo p").load("info.php");
+							$("#userInfo").show(); 
+						}else{
+							alert("nice try");
+						}
+					}
+				});
+
+				return false;
+			});
+
+			$("#logout").on('click', function(){
+				$.ajax({
+					url: "logout.php",
+					success: function(){
+							alert("logging out...");
+							$("#userInfo").hide();
+							$("#login").show();
+						}
+				});
+				return false;
+			});
+
+			$(document).on('click', '#submitPic', function(e){
+				e.preventDefault();
+				var data = new FormData($("#upload")[0]);
+    			$.ajax({
+    				type: "POST",
+					url: "upload.php",
+					data: data,
+					contentType: false,       // The content type used when sending data to the server.
+					cache: false,             // To unable request pages to be cached
+					processData:false,
+					success: function(html){
+						$.ajax({
+							url: "load_pic.php",
+							success: function(url){
+								d = new Date();
+								$( "#profilePic" ).attr( "src", url+"?"+d.getTime())}
+						});
+					}
+					
+				});
+			});
+
+
+			/*
+			GOOGLE MAP API CODE ADAPTED FROM:
+
+				https://developers.google.com/maps/documentation/javascript/tutorials/adding-a-google-map#the_googlemapsmap_object
+				https://paulund.co.uk/how-to-use-geolocation-api-with-google-maps
+
+			 MODIFIED BY GROUP 43 APROPRIATELY
+			*/
+
+			function initMap(element) {
+
+				var mapDiv = document.getElementById(element);
+//				if (navigator.geolocation.getCurrentPosition(success)) {
+
+					console.log((navigator.geolocation));
+					navigator.geolocation.getCurrentPosition(success);
+
+					console.log(navigator.geolocation.getCurrentPosition(success));
+
+					function success(position) {
+
+						console.log("Started the thing");
+						var lat = position.coords.latitude;
+						var lon = position.coords.longitude;
+						console.log("Did the Thing");
+					}
+
+					var coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+					console.log("Got to the part where we draw the map");
+
+					var map = new google.maps.Map(mapDiv, {
+						center: coords,
+						zoom: 8,
+						mapTypeControl: false,
+						navigationControlOptions: {
+							style: google.maps.NavigationControlStyle.SMALL
+						},
+						mapTypeId: google.maps.MapTypeId.ROADMAP
+					});
+
+					var marker = new google.maps.Marker({
+						//position: coords,
+						map: map,
+						title:"You are here!"
+					});
+
+//				} else {
+
+					alert('Geo Location is not supported');
+
+					var coords = new google.maps.LatLng(10.000, -10.000);
+
+					console.log("Got to the part where we draw the map");
+
+					var map = new google.maps.Map(mapDiv, {
+						center: coords,
+						zoom: 8,
+						mapTypeControl: false,
+						navigationControlOptions: {
+							style: google.maps.NavigationControlStyle.SMALL
+						},
+						mapTypeId: google.maps.MapTypeId.ROADMAP
+					});
+
+					var marker = new google.maps.Marker({
+						position: coords,
+						map: map,
+						title:"You are here!"
+					});
+//				}
+			}
+
+			
+		});
+
+
+// API key: AIzaSyAYkt7TanTFkRFNKn9TwCCuZIMphlgzqfM

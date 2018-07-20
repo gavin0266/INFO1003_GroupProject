@@ -21,14 +21,11 @@ body {
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	background-image: url("../svg/backTexture1.png");
+	background-image: url("../svg/backTexture3.svg");
+	/*background-size: contain;*/
 	background-size: 100% auto;
 	background-repeat: no-repeat;
 	background-position: center;
-}
-
-.contentImage {
-	border: 5px solid;
 }
 
 
@@ -434,7 +431,7 @@ input, textarea {
 
 	height: 25%;
 	width: 25%;
-	top: 76%;
+	top: 0%;
 	left: 0%;
 	z-index: 5;
 	
@@ -454,7 +451,7 @@ input, textarea {
 	height: 25%;
 	width: 25%;
 	top: 0%;
-	left: 75%;
+	left: 0%;
 	z-index: 5;
 }
 
